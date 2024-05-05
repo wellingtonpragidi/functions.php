@@ -1,1 +1,1 @@
-# functions.php
+# funções utilitarias
