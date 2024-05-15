@@ -95,7 +95,7 @@ function isdate($date, $format = 0) {
 /**
  * Gerador de simbolos para URLs e senhas
  * */
-function token_generation($size = 22, $type = '') {
+function token_generator($size = 22, $symbol = '') {
     $lower      = 'abcdefghijklmnopqrstuvwxyz';
     $upper      = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $number     = '1234567890';
