@@ -67,29 +67,30 @@ function preloader($time = 2400) {
  * classe DateTimeImmutable para substituir as funcoes strftime e strtotime qua estao defasadas
  */
 function isdate($date, $format = 0) {
+    if( $date != NULL) {
+	    
+        $date = new DateTimeImmutable($date);
 
-	function translate($date) {
-		$pt_br = ['January' => 'Janeiro', 'February' => 'Fevereiro', 'March' => 'Março', 'April' => 'Abril', 'May' => 'Maio', 'June' => 'Junho', 'July' => 'Julho', 'August' => 'Agosto', 'September' => 'Setembro', 'October' => 'Outubro', 'November' => 'Novembro', 'December' => 'Dezembro'];
-		return strtr($date, $pt_br);
-	}
-
-	$date = new DateTimeImmutable($date);
-
-	switch ($format) {
-		case 1:
-			$isformat = $date->format('d \d\e F \d\e Y');
-		break;
-		case 2:
-			$isformat = $date->format('d/m/Y \a\s H:i:s');
-		break;
-		case 3:
-			$isformat = $date->format('d \d\e F \d\e Y \a\s H:i:s');
-		break;
-		default:
-			$isformat = $date->format('d/m/Y');
-		break;
-	}
-	return translate($isformat);
+        switch ($format) {
+            case 1:
+                $isformat = $date->format('d \d\e F \d\e Y');
+            break;
+            case 2:
+                $isformat = $date->format('d/m/Y \a\s H:i:s');
+            break;
+            case 3:
+                $isformat = $date->format('d \d\e F \d\e Y \a\s H:i:s');
+            break;
+            default:
+                $isformat = $date->format('d/m/Y');
+            break;
+        }
+        return translate($isformat);
+    }
+}
+function translate($date) {
+    $pt_br = ['January' => 'Janeiro', 'February' => 'Fevereiro', 'March' => 'Março', 'April' => 'Abril', 'May' => 'Maio', 'June' => 'Junho', 'July' => 'Julho', 'August' => 'Agosto', 'September' => 'Setembro', 'October' => 'Outubro', 'November' => 'Novembro', 'December' => 'Dezembro'];
+    return strtr($date, $pt_br);
 }
 
 /**
