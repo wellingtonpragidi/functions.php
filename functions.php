@@ -28,22 +28,32 @@ function summary($hook, $length) {
 /**
  * @link https://packit.ui.webship.com.br/alerts/#php
  * */
-function alert($type, $content, $setTime = 6000, $fadeTime = 2100, $redirect = '') {
-    echo "<div class=\"alert $type\">$content</div>
-    <script>";
-    if( $setTime != false && $fadeTime != false && $redirect == '' ) {
-        echo "window.setTimeout(function() {
-            fade.out.selector('.alert', $fadeTime);
-        }, $setTime)";
-    }
-    if( $setTime != false && $fadeTime == false && $redirect != '' ) {
-        echo "window.setTimeout(function() {
-            window.location='$redirect';
-        }, $setTime)";
-    }
-    echo "</script>";
+function alert($type, $content) {
+    echo "<div class=\"alert $type\">$content</div>";
 }
-
+function alert_time($type, $content, $setTime = 6000, $fadeTime = 2100) {
+    echo "<div class=\"alert $type\">$content</div>
+    <script>
+        window.setTimeout(function() {
+            fade.out.selector('.alert', $fadeTime);
+        }, $setTime)
+    </script>";
+}
+function alert_redirect($type, $content, $redirect, $setTime = 6000, $fadeTime = 2100) {
+    echo "<div class=\"alert $type\">$content</div>
+    <script>
+        window.setTimeout(function() {
+            window.location='$redirect';
+        }, $setTime)
+    </script>";
+}
+function redirect($redirect, $setTime = 3000) {
+    echo "<script>
+        window.setTimeout(function() {
+            window.location='$redirect';
+        }, $setTime)
+    </script>";
+}
 /**
  * @link https://packit.ui.webship.com.br/complements/preloader/
  * */
